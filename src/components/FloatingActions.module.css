@@ -1,0 +1,128 @@
+.cluster {
+  position: fixed;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  right: max(1.25rem, env(safe-area-inset-right));
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-end;
+  pointer-events: none;
+  animation: enter var(--dur-base) var(--ease-cinematic) both;
+}
+
+.button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--c-line);
+  background: color-mix(in srgb, var(--c-stage) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-floating);
+  cursor: pointer;
+  pointer-events: auto;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-cinematic);
+}
+
+.topButton {
+  color: var(--c-ash);
+}
+
+.topButton:hover {
+  color: var(--c-bone);
+  border-color: var(--c-ash);
+  transform: translateY(-2px);
+}
+
+.whatsappButton {
+  color: #25d366;
+  border-color: color-mix(in srgb, #25d366 35%, var(--c-line));
+}
+
+.whatsappButton:hover {
+  background: color-mix(in srgb, #25d366 18%, var(--c-stage));
+  border-color: #25d366;
+  color: #2ee672;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── Accessible Tooltip on Desktop ──────────────────────── */
+.tooltip {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  padding: 0.35rem 0.65rem;
+  background: var(--c-raised);
+  border: 1px solid var(--c-line);
+  border-radius: 2px;
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bone);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: var(--shadow-card);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .button:hover .tooltip,
+  .button:focus-visible .tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .tooltip {
+    display: none;
+  }
+
+  .button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cluster {
+    animation: none !important;
+  }
+
+  .button:hover {
+    transform: none !important;
+  }
+
+  .tooltip {
+    transition: none !important;
+  }
+}
+

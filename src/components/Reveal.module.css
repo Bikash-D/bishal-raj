@@ -1,0 +1,32 @@
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity var(--dur-slow) var(--ease-cinematic),
+    transform var(--dur-slow) var(--ease-cinematic);
+}
+
+.rise {
+  transform: translateY(18px);
+}
+
+.fade {
+  transform: none;
+}
+
+.scale {
+  transform: scale(0.975);
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

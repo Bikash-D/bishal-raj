@@ -1,0 +1,383 @@
+/* Hero Section — Modern Cinematic Theatrical Entrance */
+
+.hero {
+  --actions-h: 5.75rem; /* room for the two buttons under the photograph on phones */
+  --fig-w: min(100%, calc((100svh - var(--header-h) - var(--actions-h)) * 0.5625));
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow-x: clip;
+}
+
+.figure {
+  grid-area: 1 / 1;
+  justify-self: center;
+  /* Bounded so photo + actions always fit the first screen of a phone */
+  width: var(--fig-w);
+  margin-top: var(--header-h);
+  overflow: hidden;
+}
+
+.photoWrap::before,
+.photoWrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 38%;
+  width: 9%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.photoWrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--c-stage), transparent);
+}
+
+.photoWrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--c-stage), transparent);
+}
+
+.photoWrap {
+  width: 100%;
+  animation: photo-entrance 1500ms var(--ease-cinematic) both;
+  /* The photograph's slightly lifted edge pixels would show as a seam against the page black.
+     Dissolve only the dark upper part (CSS overlay, the file is untouched); the lit floor keeps its
+     honest photographic edge instead of looking vignetted. */
+  position: relative;
+}
+
+.copy {
+  display: contents;
+}
+
+.title {
+  grid-area: 1 / 1;
+  align-self: start;
+  justify-self: center;
+  width: var(--fig-w);
+  padding: calc(var(--header-h) + var(--space-4)) var(--gutter) 0;
+  z-index: 2;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: min(var(--fs-hero), 14vw);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-name);
+  text-transform: uppercase;
+  animation: rise 1100ms var(--ease-cinematic) 200ms both;
+}
+
+.name span {
+  display: block;
+}
+
+.role {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  font-size: var(--fs-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-ash);
+  animation: rise 1100ms var(--ease-cinematic) 380ms both;
+}
+
+.role::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: var(--c-bronze);
+}
+
+.facts {
+  display: grid;
+  gap: 0.125rem;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--c-bone) 82%, var(--c-ash));
+  animation: rise 1100ms var(--ease-cinematic) 480ms both;
+}
+
+/* Phones: the intro's children join the hero grid so the actions can sit right under the photo
+   while the sentence follows. DOM order (sentence, actions, cue) is kept for readers. */
+.intro {
+  display: contents;
+}
+
+.lead {
+  grid-area: 3 / 1;
+  justify-self: center;
+  width: min(100%, 34rem);
+  padding: var(--space-4) var(--gutter) 0;
+  animation: rise 1100ms var(--ease-cinematic) 600ms both;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+  color: var(--c-bone);
+  text-wrap: balance;
+}
+
+/* ── Hero Actions ────────────────────────────────────────── */
+.actions {
+  grid-area: 2 / 1;
+  justify-self: center;
+  width: min(100%, 34rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--gutter) 0;
+  animation: rise 1100ms var(--ease-cinematic) 750ms both;
+}
+
+.primaryAction,
+.secondaryAction {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 0.75rem;
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.primaryAction {
+  background: color-mix(in srgb, var(--c-bronze) 14%, var(--c-stage));
+  border: 1px solid var(--c-bronze);
+  color: var(--c-bone);
+}
+
+.primaryAction:hover {
+  background: color-mix(in srgb, var(--c-bronze) 26%, var(--c-stage));
+  border-color: color-mix(in srgb, var(--c-bronze) 85%, #fff);
+  transform: translateY(-1px);
+}
+
+.primaryAction:active {
+  transform: translateY(0);
+}
+
+.secondaryAction {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--c-bone) 38%, var(--c-line));
+  color: var(--c-bone);
+}
+
+.secondaryAction:hover {
+  border-color: var(--c-bone);
+  color: var(--c-bone);
+  transform: translateY(-1px);
+}
+
+.secondaryAction:active {
+  transform: translateY(0);
+}
+
+/* ── Scroll Cue ─────────────────────────────────────────── */
+.cue {
+  grid-area: 4 / 1;
+  justify-self: start;
+  margin-left: var(--gutter);
+  margin-bottom: var(--space-7);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  margin-top: var(--space-6);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c-ash);
+  transition: color var(--dur-fast) var(--ease-out);
+  animation: rise 1100ms var(--ease-cinematic) 900ms both;
+}
+
+.cue:hover {
+  color: var(--c-bone);
+}
+
+.cueLine {
+  width: 1px;
+  height: 2.25rem;
+  background: var(--c-bronze);
+  transform-origin: top;
+  animation: draw 1400ms var(--ease-cinematic) 1100ms both;
+}
+
+.cueText {
+  opacity: 0.8;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.cue:hover .cueText {
+  opacity: 1;
+}
+
+/* ── Wide Screens (900px+) ──────────────────────────────── */
+@media (min-width: 900px) {
+  .hero {
+    display: block;
+    min-height: 100svh;
+  }
+
+  .figure {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    width: min(62vw, calc(100svh * 0.9825), 1572px);
+  }
+
+  .photoWrap::after {
+    display: none;
+  }
+
+  .photoWrap::before {
+    display: none;
+  }
+
+  .photoWrap {
+    /* Only the left edge borders the text column on desktop. */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14%);
+    mask-image: linear-gradient(to right, transparent, #000 14%);
+  }
+
+  .copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100svh;
+    padding: calc(var(--header-h) + clamp(2rem, 8svh, 5rem)) var(--gutter) clamp(2rem, 7svh, 4.5rem);
+    pointer-events: none;
+  }
+
+  .title,
+  .intro {
+    width: auto;
+    padding: 0;
+    pointer-events: auto;
+  }
+
+  .title {
+    justify-self: auto;
+  }
+
+  .name {
+    font-size: var(--fs-hero);
+  }
+
+  .intro {
+    display: block;
+    max-width: min(30rem, 36vw);
+  }
+
+  .lead {
+    width: auto;
+    padding: 0;
+    justify-self: auto;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: auto;
+    width: auto;
+    padding: 0;
+    margin-top: var(--space-6);
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    padding: 0.75rem 1.4rem;
+    letter-spacing: var(--tracking-caps);
+  }
+
+  .cue {
+    margin: var(--space-6) 0 0;
+  }
+}
+
+/* ── Very narrow phones: tighter button text so both stay on one row ── */
+@media (max-width: 380px) {
+  .primaryAction,
+  .secondaryAction {
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes photo-entrance {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ── Motion Accessibility ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .figure,
+  .photoWrap,
+  .name,
+  .role,
+  .facts,
+  .lead,
+  .actions,
+  .cue,
+  .cueLine {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .primaryAction:hover,
+  .secondaryAction:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,22 @@
+=== layout assertions (7 viewports) ===
+1440x900
+1366x768
+768x1024
+430x932
+390x844
+360x740
+375x667
+0 failure(s)
+
+=== functional ===
+== HTTP
+== Load behaviour
+== Contact links
+== Floating action
+== Lightbox (keyboard)
+== Video (both)
+== Console
+== Mobile menu (touch, 390)
+== Reduced motion
+== 404 page content
+0 failure(s)

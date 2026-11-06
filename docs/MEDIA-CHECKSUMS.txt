@@ -1,0 +1,40 @@
+# SHA-256 checksums of the original media (media-src/originals/)
+# Recorded: 3 November 2026, before any processing. Format: sha256  bytes  filename
+# Verify on Windows PowerShell:  Get-FileHash '.\media-src\originals\bishal video 1.mp4' -Algorithm SHA256
+
+696617981f2240e375cc66566f5a83a8fe96ee4f6731c8addc45bb3e9b67784b  182627  bishal photo1.jpeg
+ea269907de616cbbd76d872aa20d79e15715cc51d6a3e3dfdc109fc7ebd7f3a9  7342780  bishal video 1.mp4
+cbef3a1b29f03f9d34477d4af1440a5c4b9252653e237d8e5652069d33fa864e  6519410  bishal video 2.mp4
+e6f7227175ff110c141a2102d60d7ff95ca5e0d43cf4bb5e03ac42a5a6151139  86700  p10.jpeg
+7d54b3c6139ed8ba024271dc723b5e30ddbf09a8493d595739d66057261e3b3a  113165  p11.jpeg
+2e053ab6c590304845b81e98ddd92f78c164b5650ea410de20c51c672ebcf4b2  151151  p12.jpeg
+84f349d6a72da074c153041415b1ae18f48d2d7fcc77b29b53d265caf113cf18  87096  p13.jpeg
+0cc8c85e04dc1e83363b6a75700a5cff71b4e709117ee25da6eefbb643bf4e14  61120  p3.jpeg
+4884f42cf251975a34a4c9b5622104ac00f4a3a33cda9a0b4ba0f661048db70a  74012  p4.jpeg
+19fcfb550a2258e4e496d214d05a3a9dad17cdd8435c1f0a3b2a68f12080662d  118787  p5.jpeg
+544e5d4cad68c0ec02f72f19c55c730db58dd87eae9b9c2cb3f5c3ce9039295f  48001  p6.jpeg
+874aa84f9e48b386233d7c1ed8a4a3a1f21689af3cc231ec5d3b9512d441857d  30297  p7.jpeg
+50acbca76bbe4bd1a91c36919856008928ef370d733d046be492289823a494b2  51901  p8.jpeg
+337a3a8d868c459d1814a533b5a5f19a6fe59f3936ae0cd8189bf0af416003b4  44482  p9.jpeg
+0d377ce08ff0d01db7ca16ddfc7e6764b4a6f6529296e4a4298e104a71d6ab70  69094  photo2.jpeg
+
+# Upload archive as received: 0acdf1341b266007e508d548a47a17960c99ea2fd771a03ecc0af56262c7806d  14495772 bytes
+
+# Stage 2: byte-for-byte copy served by the site (same hash as the original above)
+ea269907de616cbbd76d872aa20d79e15715cc51d6a3e3dfdc109fc7ebd7f3a9  7342780  public/media/video/bishal-video-1.mp4
+
+# Stage 3 additions (4 November 2026)
+# Newly supplied video, kept as its own original. SAME decoded footage as "bishal video 2.mp4" (every decoded video frame
+# and audio packet hash is identical) but not byte-identical: the two files differ in 2 bytes inside the media data.
+f164d38c8ff3e53f81e78fb5f745038ed2aef308881a339242842aff78382d2e  6519410  bishal video 2 - resubmitted upload.mp4
+# Served by the site as Performance 02 (byte-for-byte copy of the line above):
+f164d38c8ff3e53f81e78fb5f745038ed2aef308881a339242842aff78382d2e  6519410  public/media/video/bishal-video-2.mp4
+# Proposed derived files (NOT used by the site), in media-derived/proposed/:
+ea34645c64b2c40bf490094ecea08cf93e901a719586b85e578729271e617615  8583952  proposed-performance-01-trim-gain.mp4
+6cfc54e50577345d7ac3ef285ed241bd009d36cd0b5c1165294e41af918298f2  7473987  proposed-performance-02-dark-gap-removed.mp4
+
+# Stage 3.1 additions (5 November 2026). Proposals only, NOT used by the site, in media-derived/proposed/:
+9b31553638ae079510bd11b0c05f3daa4c99615d429a85b84c69b0c300db560a  6550717  proposed-performance-02-sideways-and-dark-removed.mp4
+38adea6c2c6543debe98f1da255f0c1ade0d8cde60a44e2ebf3932c407bbd19e  poster-candidates/performance-02-at-25.0s.jpg
+eb48d00cb5118b2a3ec719dbaf0f9cebdbab73af7cc520f6cc2631e08a4683aa  poster-candidates/performance-02-at-6.5s.jpg
+# No original and no served video was changed in Stage 3.1 (re-verified: see docs/STAGE-3.1.md).

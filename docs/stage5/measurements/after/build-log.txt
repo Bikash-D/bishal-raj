@@ -1,0 +1,37 @@
+### node v22.23.4 / npm 10.9.9 — 2026-11-06T00:07Z
+
+$ npm ci
+added 33 packages, and audited 34 packages in 3s
+
+12 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+$ npm run lint
+> oxlint
+
+Found 0 warnings and 0 errors.
+Finished in 40ms on 39 files with 116 rules using 1 threads.
+
+$ npm run build   (no VITE_SITE_URL: the default, nothing invented)
+> bishal-raj-portfolio@0.0.0 build
+> tsc -b && vite build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 52 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/robots.txt                                                       0.07 kB │ gzip:  0.09 kB
+dist/assets/hanken-grotesk-cyrillic-ext-wght-normal-D_UHSL_T.woff2    1.66 kB
+dist/404.html                                                         1.91 kB │ gzip:  0.93 kB
+dist/index.html                                                       4.72 kB │ gzip:  1.68 kB
+dist/assets/hanken-grotesk-vietnamese-wght-normal-CHiFlh_0.woff2      9.32 kB
+dist/assets/hanken-grotesk-latin-ext-wght-normal-Dg-wlmqe.woff2      19.58 kB
+dist/assets/newsreader-vietnamese-opsz-normal-BjhtXyW2.woff2         27.24 kB
+dist/assets/hanken-grotesk-latin-wght-normal-CaVRRdDk.woff2          34.70 kB
+dist/assets/newsreader-latin-ext-opsz-normal-BQn1nviT.woff2          86.60 kB
+dist/assets/newsreader-latin-opsz-normal-s-izfB6B.woff2             132.00 kB
+dist/assets/index-c76qipK1.css                                       40.99 kB │ gzip:  8.19 kB
+dist/assets/index-BJBtUPxZ.js                                       261.11 kB │ gzip: 81.14 kB
+✓ built in 442ms

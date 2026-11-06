@@ -1,0 +1,196 @@
+.gallery {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--section-y) var(--gutter);
+  border-top: 1px solid var(--c-line);
+}
+
+.head {
+  margin-bottom: var(--space-8);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.label::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+}
+
+.note {
+  margin-top: var(--space-4);
+  color: var(--c-ash);
+}
+
+/* ── Phones: one column; portrait plates are inset and alternate sides for rhythm ── */
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7) 0;
+}
+
+.plate {
+  min-width: 0;
+}
+
+.portrait {
+  width: 78%;
+  justify-self: end;
+}
+
+.row .portrait:nth-of-type(even) {
+  justify-self: start;
+}
+
+.button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: zoom-in;
+  line-height: 0;
+  text-align: left;
+}
+
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--c-line);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.button picture {
+  display: block;
+  overflow: hidden;
+}
+
+.button img {
+  transition: transform 900ms var(--ease-cinematic);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(176, 128, 81, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.plateMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+  line-height: 1;
+}
+
+.index {
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  color: var(--c-ash);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.index::before {
+  content: attr(data-n);
+}
+
+.viewPrompt::before {
+  content: 'View';
+}
+
+.viewPrompt {
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bronze);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.button:hover .imageWrap {
+  border-color: color-mix(in srgb, var(--c-bronze) 50%, var(--c-line));
+}
+
+.button:hover .overlay {
+  opacity: 1;
+}
+
+.button:hover .index {
+  color: var(--c-bronze);
+}
+
+.button:hover .viewPrompt {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (hover: hover) {
+  .button:hover img {
+    transform: scale(1.025);
+  }
+}
+
+/* ── Wide: justified strips. Equal height per row, width proportional to each photo's own
+      aspect ratio (--ratio), so there is no cropping and no dead space. ── */
+@media (min-width: 800px) {
+  .grid {
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1rem, 2.2vw, 2rem);
+  }
+
+  .plate,
+  .portrait {
+    width: auto;
+    justify-self: auto;
+    flex: var(--ratio) 1 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button img {
+    transition: none !important;
+  }
+
+  .button:hover img {
+    transform: none !important;
+  }
+
+  .viewPrompt {
+    transition: none !important;
+  }
+}

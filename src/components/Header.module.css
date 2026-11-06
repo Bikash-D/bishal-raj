@@ -1,0 +1,149 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 30;
+  height: var(--header-h);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--dur-base) var(--ease-cinematic),
+    border-color var(--dur-base) var(--ease-cinematic);
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--c-bronze);
+  transform-origin: left;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.solid {
+  background: color-mix(in srgb, var(--c-stage) 90%, transparent);
+  border-bottom-color: var(--c-line);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  letter-spacing: var(--tracking-name);
+  text-decoration: none;
+  color: var(--c-bone);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.brandShown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav {
+  display: none;
+}
+
+.nav ul {
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c-ash);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 1px;
+  background: var(--c-bronze);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-cinematic);
+}
+
+.nav a:hover,
+.nav a[aria-current='true'] {
+  color: var(--c-bone);
+}
+
+.nav a:hover::after,
+.nav a[aria-current='true']::after {
+  transform: scaleX(1);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  margin-right: -0.5rem;
+  padding: 0 0.5rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bone);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.toggle:hover {
+  color: var(--c-bronze);
+}
+
+.toggleLines {
+  position: relative;
+  width: 20px;
+  height: 7px;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+@media (min-width: 800px) {
+  .nav {
+    display: block;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBar {
+    display: none;
+  }
+
+  .brand,
+  .nav a::after {
+    transition: none !important;
+  }
+}

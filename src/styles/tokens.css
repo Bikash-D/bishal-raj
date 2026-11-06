@@ -1,0 +1,83 @@
+/*
+ * Design tokens — Concept A, "Single Source".
+ * One place to change colour, type, spacing and motion for the whole site.
+ */
+:root {
+  /* ── Colour ───────────────────────────────────────────── */
+  /* Page black. Measured: most photographs have pure-black (0,0,0) top and side
+     edges, so the page is kept within a few levels of true black. Compare options
+     on the dev-only media review page (#media-review). */
+  --c-stage: #030303;
+  --c-raised: #0e0c0b; /* menus, dialogs */
+  --c-line: #221d18; /* hairlines */
+  --c-bone: #ece6da; /* primary text */
+  --c-ash: #a39b8e; /* secondary text, captions */
+  --c-bronze: #b08051; /* muted bronze accent: use sparingly */
+  --c-cobalt: #4a6fa5; /* deep blue: focus rings and rare accents only */
+
+  /* ── Typography ───────────────────────────────────────── */
+  --font-display: 'Newsreader Variable', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-ui: 'Hanken Grotesk Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-caption: 0.8125rem; /* 13px */
+  --fs-body: 1.0625rem; /* 17px */
+  --fs-lead: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem);
+  --fs-name: clamp(2.25rem, 1.4rem + 3.4vw, 4.5rem); /* tops out at 72px */
+  --fs-hero: clamp(2.9rem, 1.4rem + 5.4vw, 7rem); /* hero name only */
+  --fs-label: 0.75rem; /* 12px caps labels */
+
+  --lh-body: 1.65;
+  --lh-tight: 1.1;
+  --tracking-caps: 0.14em;
+  --tracking-name: 0.06em;
+
+  /* ── Space and layout ─────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(5rem, 11vw, 9.5rem);
+  --max-w: 90rem;
+  --header-h: 52px;
+
+  /* ── Focus ────────────────────────────────────────────── */
+  --focus-ring: 2px solid var(--c-cobalt);
+  --focus-offset: 3px;
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --dur-fast: 160ms;
+  --dur-base: 400ms;
+  --dur-slow: 900ms;
+  --dur-theatre: 1200ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Elevation & Accents ──────────────────────────────── */
+  --shadow-floating: 0 12px 32px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --c-bronze-glow: rgba(176, 128, 81, 0.22);
+  --c-whatsapp: #25d366;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 56px;
+  }
+}
+
+/* Reduced motion: every duration collapses, so transitions become instant. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}

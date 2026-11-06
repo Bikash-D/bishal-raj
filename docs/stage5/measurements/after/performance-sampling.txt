@@ -1,0 +1,14 @@
+Performance sampling, mobile (Lighthouse 13.6.0 default simulated throttling, headless Chromium 153),
+same static server (gzip on), original Stage 4 build vs Stage 5 build, 5 runs each, performance category only.
+
+STAGE 4 (original build)   perf 100, 99, 99, 100, 100   LCP 0.8 s x5   TBT 80, 100, 150, 50, 70 ms   (median TBT 81 ms)
+STAGE 5 (this delivery)    perf  94, 99, 96,  95, 100   LCP 0.8 s x5   TBT 290, 140, 240, 270, 90 ms (median TBT 238 ms)
+
+Earlier full-category runs on the Stage 5 build: perf 98 / 94 / 100 (one run had LCP 2.7 s; 7 of 8 runs overall were 0.8 s).
+The single "baseline" run recorded at the start of Stage 5 (perf 92, TBT 360 ms) was a noisy outlier; use the table above.
+
+Direct probes (Chromium, CPU throttled 4x, 8 trials, load + 4 s):
+  long-task blocking time, median:   Stage 4 165 ms | Stage 5 162 ms   (no observable difference)
+  CDP metrics, median of 6:          layout 158 -> 193 ms | style recalc 106 -> 115 ms | script 261 -> 274 ms | DOM nodes 734 -> 784
+
+Deterministic category changes (not noise): SEO 92 -> 100 (robots.txt now valid). Accessibility 100 -> 100.

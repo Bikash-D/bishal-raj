@@ -1,0 +1,401 @@
+.contact {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--section-y) var(--gutter) var(--space-6);
+  border-top: 1px solid var(--c-line);
+}
+
+.header {
+  margin-bottom: var(--space-8);
+  max-width: 44rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.label::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 1.2rem + 4.6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  color: var(--c-bone);
+  line-height: 1.45;
+  font-family: var(--font-display);
+  font-weight: 300;
+}
+
+.invitation {
+  margin-top: var(--space-3);
+  font-size: var(--fs-body);
+  color: var(--c-ash);
+  line-height: 1.5;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-8);
+}
+
+/* ── Primary channels: two full-width rows, so the address never has to wrap ─── */
+.primaryChannels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+.cardReveal {
+  height: 100%;
+  container-type: inline-size;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: color-mix(in srgb, var(--c-raised) 75%, transparent);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+/* The card is not itself a link, so it does not lift on hover. Its buttons carry the interaction. */
+.emailCard:hover,
+.emailCard:focus-within {
+  border-color: color-mix(in srgb, var(--c-bronze) 55%, var(--c-line));
+}
+
+.whatsappCard:hover,
+.whatsappCard:focus-within {
+  border-color: color-mix(in srgb, var(--c-whatsapp) 40%, var(--c-line));
+}
+
+.cardInfo {
+  min-width: 0;
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.whatsappBadge {
+  color: var(--c-whatsapp);
+}
+
+.cardValue {
+  display: block;
+  /* Padding makes the address itself a comfortable touch target (>= 44px); margins keep the layout. */
+  padding: 0.7rem 0;
+  margin: calc(var(--space-3) - 0.7rem) 0 -0.7rem;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--c-bone);
+  text-decoration: none;
+  /* A last-resort safety net on tiny screens; at every layout width the address fits on one line. */
+  overflow-wrap: anywhere;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.cardValue:hover {
+  color: var(--c-bronze);
+}
+
+.whatsappCard .cardValue:hover {
+  color: var(--c-whatsapp);
+}
+
+.cardSub {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--c-ash);
+}
+
+.cardActions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.cardAction,
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.cardAction {
+  color: var(--c-bone);
+  border: 1px solid var(--c-bronze);
+  background: color-mix(in srgb, var(--c-bronze) 12%, var(--c-stage));
+}
+
+.cardAction:hover {
+  background: color-mix(in srgb, var(--c-bronze) 24%, var(--c-stage));
+}
+
+.whatsappAction {
+  border-color: color-mix(in srgb, var(--c-whatsapp) 60%, var(--c-line));
+  background: color-mix(in srgb, var(--c-whatsapp) 8%, var(--c-stage));
+}
+
+.whatsappAction:hover {
+  background: color-mix(in srgb, var(--c-whatsapp) 18%, var(--c-stage));
+  border-color: var(--c-whatsapp);
+}
+
+.copyBtn {
+  color: var(--c-ash);
+  background: transparent;
+  border: 1px solid var(--c-line);
+}
+
+.copyBtn:hover {
+  color: var(--c-bone);
+  border-color: var(--c-ash);
+}
+
+/* ── Secondary Social Links ─────────────────────────────── */
+.secondarySection {
+  margin-top: var(--space-4);
+}
+
+.socialHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.socialTitle {
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-ash);
+  font-weight: 400;
+}
+
+.socialRule {
+  flex: 1;
+  height: 1px;
+  background: var(--c-line);
+}
+
+.socialList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--c-line);
+}
+
+.socialList li {
+  border-bottom: 1px solid var(--c-line);
+}
+
+.socialRow {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 3.75rem;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: var(--c-ash);
+  transition:
+    padding-left var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.socialRow:hover {
+  padding-left: 0.5rem;
+  color: var(--c-bone);
+}
+
+.socialLabel {
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-ash);
+}
+
+.socialHandle {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--c-bone);
+}
+
+.socialArrow {
+  color: var(--c-ash);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.socialRow:hover .socialArrow {
+  color: var(--c-bronze);
+  transform: translate(2px, -2px);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-9);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-caption);
+  color: var(--c-ash);
+}
+
+.copyright {
+  opacity: 0.85;
+}
+
+.topLink,
+.devLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--c-ash);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  font-size: var(--fs-label);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.topLink:hover {
+  color: var(--c-bone);
+}
+
+.devLink {
+  flex-basis: 100%;
+  color: var(--c-bronze);
+  font-size: 0.75rem;
+}
+
+.devLink:hover {
+  color: var(--c-bone);
+}
+
+/* ── Breakpoints ────────────────────────────────────────── */
+/* Side-by-side only when the card itself is wide enough for the address plus both buttons. */
+@container (min-width: 640px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .cardActions {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .content {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .secondarySection {
+    margin-top: 0;
+  }
+}
+
+/* Phones: label stacked above the handle (never hidden: it is part of the link's name). */
+@media (max-width: 480px) {
+  .socialRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label arrow'
+      'handle arrow';
+    row-gap: 0.125rem;
+  }
+
+  .socialLabel {
+    grid-area: label;
+    font-size: 0.6875rem;
+  }
+
+  .socialHandle {
+    grid-area: handle;
+  }
+
+  .socialArrow {
+    grid-area: arrow;
+  }
+}
+
+/* Narrow cards: keep each action on one line. */
+@container (max-width: 420px) {
+  .cardAction,
+  .copyBtn {
+    padding: 0 0.875rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+.socialMeta {
+  font-family: var(--font-ui);
+  font-size: var(--fs-caption);
+  color: var(--c-ash);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialRow:hover {
+    transform: none !important;
+  }
+
+  .socialRow:hover .socialArrow {
+    transform: none !important;
+  }
+}

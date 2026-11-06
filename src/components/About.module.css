@@ -1,0 +1,212 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  max-width: 105rem;
+  margin: 0 auto;
+  padding: var(--section-y) 0;
+}
+
+.photo {
+  width: 100%;
+}
+
+.photoFrame {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.text {
+  padding: 0 var(--gutter);
+  max-width: 38rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.label::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.body {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+  color: var(--c-ash);
+  max-width: 34rem;
+}
+
+.body p:first-child {
+  color: var(--c-bone);
+}
+
+/* ── Training Credential Block ──────────────────────────── */
+.training {
+  margin-top: var(--space-7);
+  padding: var(--space-4) 0 var(--space-4) var(--space-5);
+  border-left: 2px solid var(--c-bronze);
+  background: linear-gradient(to right, color-mix(in srgb, var(--c-bronze) 6%, transparent), transparent);
+}
+
+.trainingLabel {
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.trainingName {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.statusWrap {
+  margin-top: var(--space-3);
+}
+
+.certificateBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-bone);
+  border: 1px solid color-mix(in srgb, var(--c-bronze) 65%, transparent);
+  background: color-mix(in srgb, var(--c-bronze) 12%, var(--c-stage));
+  border-radius: 2px;
+}
+
+.trainingDetail {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--c-ash);
+}
+
+/* ── Facts Table ────────────────────────────────────────── */
+.facts {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--c-line);
+}
+
+.facts div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--c-line);
+  align-items: baseline;
+}
+
+.facts dt {
+  padding-top: 0.15rem;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-ash);
+}
+
+.facts dd {
+  font-size: 1rem;
+}
+
+.factHighlight {
+  color: var(--c-bone);
+  font-weight: 500;
+}
+
+.openToChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--c-ash);
+  background: color-mix(in srgb, var(--c-raised) 70%, transparent);
+  border: 1px solid var(--c-line);
+  border-radius: 2px;
+}
+
+/* ── Credits (renders only when verified credits exist in profile.ts) ── */
+.credits {
+  margin-top: var(--space-6);
+}
+
+.creditsTitle {
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--c-ash);
+}
+
+.credits ul {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--c-line);
+}
+
+.credits li {
+  display: grid;
+  gap: 0.125rem;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.creditTitle {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+}
+
+.creditMeta {
+  font-size: var(--fs-caption);
+  color: var(--c-ash);
+}
+
+/* ── Breakpoints ────────────────────────────────────────── */
+@media (min-width: 900px) {
+  .about {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: end;
+    padding-right: var(--gutter);
+  }
+
+  .photo {
+    max-width: 1293px;
+  }
+
+  .text {
+    padding: 0;
+    padding-bottom: clamp(0rem, 3vw, 3rem);
+  }
+}
