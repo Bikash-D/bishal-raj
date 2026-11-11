@@ -1,15 +1,15 @@
+
 /**
- * Site content. Everything here is supplied by Bishal's team. Nothing is invented: no credits,
- * awards, representation or testimonials. Training is limited to what has been confirmed
- * (Mandala Theatre, certificate holder); see TRAINING below to add exact certificate wording.
+ * Site content. Everything here is supplied by Bishal's team.
+ * No credits, awards, representation or testimonials are invented.
  *
- * This file must stay free of `import.meta.env` and bundler-only imports: scripts/build-profile-pdf.mjs
- * imports it directly with Node, so the downloadable profile sheet always matches the website.
+ * This file must stay free of import.meta.env and bundler-only imports:
+ * scripts/build-profile-pdf.mjs imports it directly with Node.
  */
 
 /**
- * Public contact details confirmed by the owner for professional enquiries.
- * All contact information is centralized here so it is never hardcoded across components.
+ * Public contact details confirmed by the owner.
+ * All contact information is centralized here.
  */
 export const CONTACT_CONFIG = {
   email: 'thebishalraj@gmail.com',
@@ -39,40 +39,42 @@ export const SITE = {
   nameUpper: 'BISHAL RAJ',
   role: 'Actor',
   primaryLanguage: 'Nepali',
-  intro: 'Bishal Raj is an actor trained in theatre at Mandala Theatre, performing primarily in Nepali.',
+  intro: 'Bishal Raj is an emerging Nepali actor with theatre training at Nachghar and Mandala Theatre.',
   openTo: ['Film', 'Television', 'Theatre', 'Commercials', 'Digital productions'],
 } as const
 
-/** Hero line. Wording supplied by Bishal's team; no biographical detail is added. */
+/** Hero introduction. */
 export const HERO_INTRO =
   'An emerging Nepali actor exploring character, emotion and the human experience through performance.'
 
 /**
- * Confirmed by the owner: training at Mandala Theatre, and he holds a certificate.
- * NOT confirmed (so left null and never shown): the official course title, certificate title,
- * level, duration, year, accreditation. Fill these in when supplied; they appear in the About
- * section automatically.
+ * Confirmed theatre training and certificates.
+ * No unconfirmed course titles, dates or qualifications are claimed.
  */
-export const TRAINING = {
-  label: 'Theatre Training',
-  institution: 'Mandala Theatre',
-  status: 'Certificate holder',
-  courseTitle: null as string | null,
-  certificateTitle: null as string | null,
-  year: null as string | null,
-} as const
+export const TRAININGS = [
+  {
+    label: 'Theatre Training',
+    institution: 'Nachghar',
+    status: 'Certificate Holder',
+  },
+  {
+    label: 'Theatre Training',
+    institution: 'Mandala Theatre',
+    status: 'Certificate Holder',
+  },
+] as const
 
-/**
- * The two confirmed facts shown under the name on the first screen, so a casting director sees
- * training and performing language without scrolling. Both were confirmed by the owner.
- */
-export const HERO_FACTS: readonly string[] = [`${TRAINING.institution} certificate`, `Performs in ${SITE.primaryLanguage}`]
+/** Key facts displayed beneath the actor's name. */
+export const HERO_FACTS: readonly string[] = [
+  'Nachghar & Mandala Theatre',
+  'Nepali Theatre & Performance',
+]
 
 export const ABOUT = {
-  lead: 'Grounded in theatre. Open to the screen.',
+  lead: 'Grounded in theatre. Open to new stories.',
   paragraphs: [
-    'Bishal Raj is an emerging Nepali actor. He trained in theatre at Mandala Theatre and holds a certificate from the institution. He performs primarily in Nepali.',
-    'He is early in his career and open to work across film, television, theatre, commercials and digital productions. The photographs and performances on this page are a first look at his presence on stage.',
+    'Bishal Raj is an emerging Nepali actor with theatre training at Nachghar and Mandala Theatre. He holds certificates from both institutions and performs primarily in Nepali.',
+    'He is open to opportunities across film, television, theatre, commercials and digital productions.',
   ],
 } as const
 
@@ -113,6 +115,14 @@ export interface SocialLink {
 }
 
 export const SOCIAL_LINKS: readonly SocialLink[] = [
-  { label: CONTACT_CONFIG.instagram.label, url: CONTACT_CONFIG.instagram.url, handle: CONTACT_CONFIG.instagram.handle },
-  { label: CONTACT_CONFIG.facebook.label, url: CONTACT_CONFIG.facebook.url, handle: CONTACT_CONFIG.facebook.handle },
+  {
+    label: CONTACT_CONFIG.instagram.label,
+    url: CONTACT_CONFIG.instagram.url,
+    handle: CONTACT_CONFIG.instagram.handle,
+  },
+  {
+    label: CONTACT_CONFIG.facebook.label,
+    url: CONTACT_CONFIG.facebook.url,
+    handle: CONTACT_CONFIG.facebook.handle,
+  },
 ]

@@ -1,4 +1,5 @@
-import { ABOUT, TRAINING } from '../content/site'
+
+import { ABOUT, TRAININGS } from '../content/site'
 import { visibleCredits, visibleFacts } from '../content/profile'
 import { images } from '../content/media'
 import { Picture } from './Picture'
@@ -8,11 +9,16 @@ import styles from './About.module.css'
 export function About() {
   const facts = visibleFacts()
   const credits = visibleCredits()
+
   return (
     <section id="about" className={styles.about} aria-labelledby="about-heading">
       <Reveal className={styles.photo} variant="scale">
         <div className={styles.photoFrame}>
-          <Picture asset={images.portraitIntense} sizes="(min-width: 900px) 58vw, 100vw" style={{ width: '100%' }} />
+          <Picture
+            asset={images.portraitIntense}
+            sizes="(min-width: 900px) 58vw, 100vw"
+            style={{ width: '100%' }}
+          />
         </div>
       </Reveal>
 
@@ -32,16 +38,22 @@ export function About() {
 
         <Reveal delay={160}>
           <div className={styles.training}>
-            <p className={styles.trainingLabel}>{TRAINING.label}</p>
-            <p className={styles.trainingName}>{TRAINING.institution}</p>
-            <div className={styles.statusWrap}>
-              <span className={styles.certificateBadge}>{TRAINING.status}</span>
-            </div>
-            {TRAINING.courseTitle || TRAINING.certificateTitle || TRAINING.year ? (
-              <p className={styles.trainingDetail}>
-                {[TRAINING.courseTitle, TRAINING.certificateTitle, TRAINING.year].filter(Boolean).join(' \u00b7 ')}
-              </p>
-            ) : null}
+            {TRAININGS.map((training) => (
+              <div
+                className={styles.trainingItem}
+                key={training.institution}
+              >
+                <p className={styles.trainingLabel}>{training.label}</p>
+                <p className={styles.trainingName}>
+                  {training.institution}
+                </p>
+                <div className={styles.statusWrap}>
+                  <span className={styles.certificateBadge}>
+                    {training.status}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </Reveal>
 
@@ -60,7 +72,9 @@ export function About() {
                   </dd>
                 ) : (
                   <dd>
-                    <span className={styles.factHighlight}>{String(f.value)}</span>
+                    <span className={styles.factHighlight}>
+                      {String(f.value)}
+                    </span>
                   </dd>
                 )}
               </div>
@@ -77,7 +91,9 @@ export function About() {
                   <li key={`${c.title}-${c.year ?? ''}`}>
                     <span className={styles.creditTitle}>{c.title}</span>
                     <span className={styles.creditMeta}>
-                      {[c.role, c.kind, c.company, c.year].filter(Boolean).join(' \u00b7 ')}
+                      {[c.role, c.kind, c.company, c.year]
+                        .filter(Boolean)
+                        .join(' · ')}
                     </span>
                   </li>
                 ))}

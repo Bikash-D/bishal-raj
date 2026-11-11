@@ -10,7 +10,7 @@ export interface GeneratedImage {
   readonly jpgBytes: number
   /** AVIF quality used, or null when the image is served as the original JPEG only. */
   readonly avifQuality: number | null
-  /** Chroma subsampling of the shipped AVIF, or null when none is shipped. */
+  /** Chroma subsampling of the shipped AVIF (4:4:4 keeps full colour resolution). */
   readonly avifChroma: '4:2:0' | '4:4:4' | null
   readonly avif: ReadonlyArray<{ readonly width: number; readonly bytes: number }>
 }
@@ -26,19 +26,19 @@ export const generatedImages = {
     "avif": [
       {
         "width": 480,
-        "bytes": 21174
+        "bytes": 21528
       },
       {
         "width": 800,
-        "bytes": 45801
+        "bytes": 46385
       },
       {
         "width": 1200,
-        "bytes": 82486
+        "bytes": 83244
       },
       {
         "width": 1572,
-        "bytes": 97151
+        "bytes": 98843
       }
     ]
   },
@@ -52,11 +52,11 @@ export const generatedImages = {
     "avif": [
       {
         "width": 480,
-        "bytes": 30117
+        "bytes": 30570
       },
       {
         "width": 900,
-        "bytes": 58979
+        "bytes": 60513
       }
     ]
   },
@@ -65,22 +65,9 @@ export const generatedImages = {
     "width": 1293,
     "height": 1325,
     "jpgBytes": 69094,
-    "avifQuality": 85,
-    "avifChroma": "4:2:0",
-    "avif": [
-      {
-        "width": 480,
-        "bytes": 15677
-      },
-      {
-        "width": 800,
-        "bytes": 32924
-      },
-      {
-        "width": 1293,
-        "bytes": 53520
-      }
-    ]
+    "avifQuality": null,
+    "avifChroma": null,
+    "avif": []
   },
   "stagePonchos": {
     "file": "stage-ponchos",
@@ -137,15 +124,15 @@ export const generatedImages = {
     "avif": [
       {
         "width": 480,
-        "bytes": 20059
+        "bytes": 20468
       },
       {
         "width": 800,
-        "bytes": 41153
+        "bytes": 41973
       },
       {
         "width": 1169,
-        "bytes": 67237
+        "bytes": 68151
       }
     ]
   },
@@ -154,6 +141,15 @@ export const generatedImages = {
     "width": 900,
     "height": 1600,
     "jpgBytes": 61120,
+    "avifQuality": null,
+    "avifChroma": null,
+    "avif": []
+  },
+  "nachgharCertificate": {
+    "file": "nachghar-certificate",
+    "width": 435,
+    "height": 800,
+    "jpgBytes": 491043,
     "avifQuality": null,
     "avifChroma": null,
     "avif": []
