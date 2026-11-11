@@ -1,19 +1,16 @@
+
 import { images, type ImageAsset, type ImageId } from './media'
 
 /**
  * The gallery, in reading order, grouped into two rows ("spreads").
  *
  * Wide screens: each row is a justified strip. Every plate in a row has the same height and a width
- * proportional to its own aspect ratio, so nothing is cropped and there are no empty gaps. Row 1 is
- * the large lead spread; row 2 is a quieter three-up.
+ * proportional to its own aspect ratio, so nothing is cropped and there are no empty gaps.
+ * Row 1 is the large lead spread; row 2 contains the remaining stage and certificate photographs.
  * Phones: one column, with portrait plates inset for rhythm.
  *
- * Curated down to five stage photographs on purpose (Stage 5):
- *  - kneelClose (p4) is the phone hero and a near-duplicate of the desktop hero pose, so it no
- *    longer repeats here. It stays available in media.ts.
- *  - kneelWide (p5) and portraitIntense (photo2) are already shown full size in the hero and About.
- *  - stageEnsemble (p10) and kneelFar (p3) remain optional until the owner approves them.
- *  - p9, p13 and photo1 stay excluded.
+ * The gallery includes five selected stage photographs and the Nachghar certificate photograph.
+ * Other optional photographs remain excluded until approved.
  */
 export interface GalleryEntry {
   readonly id: ImageId
@@ -28,6 +25,7 @@ export const GALLERY: readonly GalleryEntry[] = [
   { id: 'stageCotton', row: 2, sizes: '(min-width: 800px) 22vw, 90vw' },
   { id: 'stageStill', row: 2, sizes: '(min-width: 800px) 33vw, 90vw' },
   { id: 'stageShout', row: 2, sizes: '(min-width: 800px) 38vw, 100vw' },
+  { id: 'nachgharCertificate', row: 2, sizes: '(min-width: 800px) 30vw, 90vw' },
 ]
 
 export function galleryAsset(entry: GalleryEntry): ImageAsset {

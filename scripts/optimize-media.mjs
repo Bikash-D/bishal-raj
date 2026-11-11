@@ -1,3 +1,4 @@
+
 /**
  * Media optimiser for the Bishal Raj portfolio.
  *
@@ -63,6 +64,16 @@ const IMAGES = [
   { id: 'stageStill', file: 'stage-still', source: 'p7.jpeg', quality: 80, avif: false, why: 'Independent whole-image SSIM 0.983 (below 0.99): shadowed eyes and dark gradients. Saving would be about 8 KB.' },
   { id: 'stageEnsemble', file: 'stage-ensemble', source: 'p10.jpeg', quality: 80, avif: true },
   { id: 'kneelFar', file: 'kneel-far', source: 'p3.jpeg', quality: 80, avif: false, why: 'Independent whole-image SSIM 0.990 at best on a mostly-black frame. Saving would be about 18 KB.' },
+
+  // Nachghar certificate photograph: preserve the original JPEG without re-encoding.
+  {
+    id: 'nachgharCertificate',
+    file: 'nachghar-certificate',
+    source: 'nachghar-certificate.jpg',
+    quality: 80,
+    avif: false,
+    why: 'Certificate photograph retained as the untouched original JPEG.',
+  },
 ]
 
 async function toPlanes(input) {
@@ -252,7 +263,7 @@ export interface GeneratedImage {
   readonly jpgBytes: number
   /** AVIF quality used, or null when the image is served as the original JPEG only. */
   readonly avifQuality: number | null
-  /** Chroma subsampling of the shipped AVIF, or null when none is shipped. */
+  /** Chroma subsampling of the shipped AVIF (4:4:4 keeps full colour resolution). */
   readonly avifChroma: '4:2:0' | '4:4:4' | null
   readonly avif: ReadonlyArray<{ readonly width: number; readonly bytes: number }>
 }

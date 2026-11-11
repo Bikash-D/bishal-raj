@@ -6,27 +6,30 @@ SSIM is a screening tool, not proof: shipped images were also compared at 100% b
 
 | Image | Source | Native px | Original JPEG | Attempt | AVIF at native | Saving | RGB SSIM (lit) | Independent SSIM (ffmpeg) | Result |
 |---|---|---|---|---|---|---|---|---|---|
-| kneelWide | p5.jpeg | 1572x1600 | 116 KB | q85 4:2:0 | 95 KB | 18% | 0.9960 | 0.9934 | **shipped** |
-| kneelClose | p4.jpeg | 900x1600 | 72 KB | q85 4:2:0 | 58 KB | 20% | 0.9955 | 0.9925 | **shipped** |
-| portraitIntense | photo2.jpeg | 1293x1325 | 67 KB | q85 4:2:0 | 52 KB | 23% | 0.9956 | 0.9905 | **shipped** |
+| kneelWide | p5.jpeg | 1572x1600 | 116 KB | q85 4:2:0 | 97 KB | 17% | 0.9959 | 0.9924 | **shipped** |
+| kneelClose | p4.jpeg | 900x1600 | 72 KB | q85 4:2:0 | 59 KB | 18% | 0.9954 | 0.9918 | **shipped** |
+| portraitIntense | photo2.jpeg | 1293x1325 | 67 KB | q85 4:2:0 | 54 KB | 20% | 0.9954 | 0.9893 | rejected |
+| portraitIntense | photo2.jpeg | 1293x1325 | 67 KB | q85 4:4:4 | 54 KB | 20% | 0.9958 | 0.9895 | rejected |
 | stagePonchos | p11.jpeg | 1170x881 | 111 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Colour-critical warm image; AVIF saved only 13% (under the 15% rule). |
 | stageCotton | p12.jpeg | 1200x1600 | 148 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Colour-critical blue-lit image; AVIF saved only 10% (under the 15% rule). |
 | stagePoint | p6.jpeg | 848x1507 | 47 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Independent whole-image SSIM 0.985 (below 0.99): large near-black areas with subtle gradients. Saving would be about 11 KB. |
 | stageShout | p8.jpeg | 1600x1200 | 51 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Independent whole-image SSIM 0.985 (below 0.99): dark atmospheric image. Saving would be about 16 KB. |
 | stageStill | p7.jpeg | 894x782 | 30 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Independent whole-image SSIM 0.983 (below 0.99): shadowed eyes and dark gradients. Saving would be about 8 KB. |
-| stageEnsemble | p10.jpeg | 1169x791 | 85 KB | q80 4:2:0 | 64 KB | 25% | 0.9872 | 0.9898 | rejected |
-| stageEnsemble | p10.jpeg | 1169x791 | 85 KB | q80 4:4:4 | 66 KB | 22% | 0.9914 | 0.9927 | **shipped** |
+| stageEnsemble | p10.jpeg | 1169x791 | 85 KB | q80 4:2:0 | 65 KB | 24% | 0.9866 | 0.9893 | rejected |
+| stageEnsemble | p10.jpeg | 1169x791 | 85 KB | q80 4:4:4 | 67 KB | 21% | 0.9911 | 0.9924 | **shipped** |
 | kneelFar | p3.jpeg | 900x1600 | 60 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Independent whole-image SSIM 0.990 at best on a mostly-black frame. Saving would be about 18 KB. |
+| nachgharCertificate | nachghar-certificate.jpg | 435x800 | 480 KB | n/a | n/a | n/a | n/a | n/a | **original JPEG only**: Certificate photograph retained as the untouched original JPEG. |
 
 ## Shipped files per image
 
-- **kneelWide**: AVIF 4:2:0, 480px (21 KB), 800px (45 KB), 1200px (81 KB), 1572px (95 KB) + untouched original JPEG
-- **kneelClose**: AVIF 4:2:0, 480px (29 KB), 900px (58 KB) + untouched original JPEG
-- **portraitIntense**: AVIF 4:2:0, 480px (15 KB), 800px (32 KB), 1293px (52 KB) + untouched original JPEG
+- **kneelWide**: AVIF 4:2:0, 480px (21 KB), 800px (45 KB), 1200px (81 KB), 1572px (97 KB) + untouched original JPEG
+- **kneelClose**: AVIF 4:2:0, 480px (30 KB), 900px (59 KB) + untouched original JPEG
+- **portraitIntense**: untouched original JPEG only
 - **stagePonchos**: untouched original JPEG only
 - **stageCotton**: untouched original JPEG only
 - **stagePoint**: untouched original JPEG only
 - **stageShout**: untouched original JPEG only
 - **stageStill**: untouched original JPEG only
-- **stageEnsemble**: AVIF 4:4:4, 480px (20 KB), 800px (40 KB), 1169px (66 KB) + untouched original JPEG
+- **stageEnsemble**: AVIF 4:4:4, 480px (20 KB), 800px (41 KB), 1169px (67 KB) + untouched original JPEG
 - **kneelFar**: untouched original JPEG only
+- **nachgharCertificate**: untouched original JPEG only

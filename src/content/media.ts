@@ -1,3 +1,4 @@
+
 import { generatedImages } from './media.generated'
 
 /**
@@ -86,6 +87,12 @@ const editorial: Record<ImageId, Editorial> = {
     optional: true,
     alt: 'Bishal Raj kneeling in a spotlit circle on an otherwise dark stage.',
     note: 'Used only if it contributes to the final contact design.',
+  },
+  nachgharCertificate: {
+    sourceFile: 'nachghar-certificate.jpg',
+    assignment: 'Stage gallery, Nachghar theatre training certificate',
+    alt: 'Bishal Raj receiving a certificate at a Nachghar theatre training event.',
+    note: 'Certificate photograph supplied by the owner.',
   },
 }
 

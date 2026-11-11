@@ -62,11 +62,21 @@
 }
 
 /* ── Training Credential Block ──────────────────────────── */
+
 .training {
   margin-top: var(--space-7);
   padding: var(--space-4) 0 var(--space-4) var(--space-5);
   border-left: 2px solid var(--c-bronze);
-  background: linear-gradient(to right, color-mix(in srgb, var(--c-bronze) 6%, transparent), transparent);
+  background: linear-gradient(to right,
+      color-mix(in srgb, var(--c-bronze) 6%, transparent),
+      transparent);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.trainingItem+.trainingItem {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--c-line);
 }
 
 .trainingLabel {
